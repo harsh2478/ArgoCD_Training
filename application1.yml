@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: web
+spec:
+  project: default
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: default
+  source:
+    repoURL: https://github.com/harsh2478/ArgoCD_Training.git
+    targetRevision: main 
+    path: manifest1
