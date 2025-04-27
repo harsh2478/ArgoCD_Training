@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cluster2
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+type: Opaque
+stringData:
+  name: cluster2
+  server: "https://192.168.59.118:8443"
+  config: | 
+    {
+      "bearerToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IklINkEweWRBQ01LNXBSMDdqckpUaVVGTnZlSmZ3cXlYREdTeHk5cjdHRVEifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzQ1NzY2NDgwLCJpYXQiOjE3NDU3NjI4ODAsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0Iiwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImFyZ29jZCIsInVpZCI6ImJhMGJmOWYzLTkzYjgtNDY3Mi1hNTE5LTE0OGUwZTkzOGI1NiJ9fSwibmJmIjoxNzQ1NzYyODgwLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVmYXVsdDphcmdvY2QifQ.mRQHOxBTS25ffsXb8wLySZYD_sf407Nh5L6NIGCErIenYhEbdh73rDSsb4LXQItTvDxAI9u3jN8B6z-aSaLTHhkSU79MICX0pf1gWxJcUeVv3Ce3Nz6oEL1fl9Q5t4xwQqU4WS48pKD1lHIfufSqBK2ffny_eZ9jdzBJIDf_TwBidHnUzeh39S1qAX_VD-7iMfE0KyUaCDlK_26jfwvfv0NDAYq4kzCt1hVdxpMutWwqXYSskTrF4HqUWh_VWf1xwzaZc9yzqmg1PV_S3q-2Wi4UOTcv1nFzC5cRfMQ0OwVeCvrz_5G9vHyIB2MoVKQAiFBFpmMEchbB3gaPIHf47g",
+      "tlsClientConfig": {
+        "insecure": true 
+      }
+    }
