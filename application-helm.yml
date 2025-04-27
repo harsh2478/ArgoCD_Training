@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: web
+spec:
+  project: default
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: default
+  source:
+    repoURL: https://github.com/harsh2478/ArgoCD_Training.git
+    targetRevision: HEAD 
+    path: demo-chart
+    helm:
+      releaseName: demo-chart
+      parameters:
+        - name: "replicaCount"
+          value: "2"
+  syncPolicy: 
+    automated:
+      prune: true
