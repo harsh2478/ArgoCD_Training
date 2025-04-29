@@ -1,18 +1,40 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: cluster2
+  name: staging-secret
   namespace: argocd
   labels:
     argocd.argoproj.io/secret-type: cluster
+    environment: staging
 type: Opaque
 stringData:
-  name: cluster2
-  server: "https://192.168.59.118:8443"
+  name: staging
+  server: "https://192.168.59.120:8443"
   config: | 
     {
-      "bearerToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IklINkEweWRBQ01LNXBSMDdqckpUaVVGTnZlSmZ3cXlYREdTeHk5cjdHRVEifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzQ1NzY2NDgwLCJpYXQiOjE3NDU3NjI4ODAsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0Iiwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImFyZ29jZCIsInVpZCI6ImJhMGJmOWYzLTkzYjgtNDY3Mi1hNTE5LTE0OGUwZTkzOGI1NiJ9fSwibmJmIjoxNzQ1NzYyODgwLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVmYXVsdDphcmdvY2QifQ.mRQHOxBTS25ffsXb8wLySZYD_sf407Nh5L6NIGCErIenYhEbdh73rDSsb4LXQItTvDxAI9u3jN8B6z-aSaLTHhkSU79MICX0pf1gWxJcUeVv3Ce3Nz6oEL1fl9Q5t4xwQqU4WS48pKD1lHIfufSqBK2ffny_eZ9jdzBJIDf_TwBidHnUzeh39S1qAX_VD-7iMfE0KyUaCDlK_26jfwvfv0NDAYq4kzCt1hVdxpMutWwqXYSskTrF4HqUWh_VWf1xwzaZc9yzqmg1PV_S3q-2Wi4UOTcv1nFzC5cRfMQ0OwVeCvrz_5G9vHyIB2MoVKQAiFBFpmMEchbB3gaPIHf47g",
+      "bearerToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IldGN0RmODdPbUg3SC1sY0NHQlJ4TG5TUmZtN2FJRjFMUFd2UkZXcTl0TVEifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzQ1OTI3MzQzLCJpYXQiOjE3NDU5MjM3NDMsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0Iiwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImFyZ29jZCIsInVpZCI6IjA1ZTY0ZTZmLWY3M2ItNDhjNS1hOWViLWE2NDE2NjBiNzFlYSJ9fSwibmJmIjoxNzQ1OTIzNzQzLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVmYXVsdDphcmdvY2QifQ.fc-G-EqJ3LA6p0V3Hx0pOX6rTfn8Ix1ZjOskc3k64cF3SlIoqbIlqdV7htHzIjsJYhV6q1hKauv4eFqMUZZ5WyWRqB5SLULxQ8U4dl-MKo00ZRjm5ujTGn8dxU9dkBYIDJw2NPoHtSoqpCoHcKP1DYitVAXQgzJzVtUTVbpIuhrW834GrK8K3rztMLZzJBS5hX8ymsC0X6IiidO4HLEdf7WJ9hPzF-3GVSO_6RYvsvwYlRSUCOCepAXkfdbvThKnioHFjv7KTBY1INiWeYEZ8Zg5It7oR_5rMY77o0uuP5gkT3J4j3jA02d--XBz-V_utsALlGrJYjxO81zkIMrOBw",
       "tlsClientConfig": {
         "insecure": true 
+      }
+    }
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: prod-secret
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+    environment: production
+type: Opaque
+stringData:
+  name: production
+  server: "https://192.168.59.121:8443"
+  config: |
+    {
+      "bearerToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IktJUjQwNG5LaUxkNDIyenBaNVllam5CUzZiZEFGTm5pXzhLTmpCRDctZWcifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzQ1OTI3NDkxLCJpYXQiOjE3NDU5MjM4OTEsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0Iiwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImFyZ29jZCIsInVpZCI6IjkwZGUyNTQ0LTg5NjAtNDJjMC05Mjc4LTNiMTlkZjUyY2UxZiJ9fSwibmJmIjoxNzQ1OTIzODkxLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVmYXVsdDphcmdvY2QifQ.O7j63qwgTFHbgTMBX0TyVwjTFCY-ePC6nR6l40U3nsgUHDHOzHCuRMJgVBdUAPBKr_DuDsm_Ajf5tLpSu5zzicoOZL01piB5JqlRs0rswEVnvRGenloJ4mx6jRFjUkVm-lGva6uw3XEKXyudzrboFZ-mI5K9A_jQvoPhSNZehsMEstDHIr8wEIv-JnnYVQ675fbkvyakmHPQUyulmQDhaJIuuwyACwz9b_ph4w9rK1hnkskreMI0IQS5PFJE0E-MGwNgLWqIHU0PH7Z83a0tjMLqgcJNEaj4MfjXy-0SNyCuzHUiE6o_oayjcYCNN7Y6m-3g3iaMHswMqx66J7QlPA",
+      "tlsClientConfig": {
+        "insecure": true
       }
     }

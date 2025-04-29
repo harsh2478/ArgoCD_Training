@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-list
+  namespace: argocd
+spec: 
+  generators:
+  - list:
+      elements:
+      - cluster: staging
+        url: https://192.168.59.120:8443 
+      - cluster: production
+        url: https://192.168.59.121:8443 
+  template:
+    metadata:
+      name: '{{.cluster}}-application'
+      namespace: argocd
+    spec:
+      project: default
+      destination: 
+        server: '{{.url}}'
+        namespace: default
+      source:
+        repoURL: 'https://github.com/harsh2478/ArgoCD_Training.git'
+        path: 'manifest1/{{.cluster}}'
+        targetRevision: HEAD
+      syncPolicy: 
+        automated:
+          prune: true
+
